@@ -3,11 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../store/action-creator/user";
 import { useTypedSector } from "./hooks/useTypedSelector";
 
-type Props = {};
-
-const UserList = (props: Props) => {
-  const { users, error, loading } = useTypedSector((state) => state.first);
-  console.log(users);
+const UserList = () => {
+  const { users, error, loading } = useTypedSector((state) => state.users);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,8 +20,9 @@ const UserList = (props: Props) => {
 
   return (
     <div>
+      <h1>UserList</h1>
+
       <div>
-        {" "}
         {users.map((user) => (
           <div key={user.id} style={{ display: "block" }}>
             {user.name}

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "redux";
-import { EUserState, Iaction } from "../../types/types";
+import { EUserState, Iaction } from "../../types/userTypes";
 
 export const fetchUsers = () => {
   return async (dispatch: Dispatch<Iaction>) => {

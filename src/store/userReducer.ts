@@ -1,4 +1,4 @@
-import { EUserState, Iaction, UserState } from "../types/types";
+import { EUserState, Iaction, UserState } from "../types/userTypes";
 
 const initialState: UserState = {
   users: [],
