@@ -1,30 +1,34 @@
 import {
   ETodosActionType,
   IActionTodosType,
-  IinitStateTodos
+  IinitStateTodos,
 } from "../types/todosTypes";
 
 const initStateTodos: IinitStateTodos = {
   todos: [],
   loading: false,
-  error: null
+  error: null,
+  page: 1,
+  limit: 10,
 };
 
 export const todosReducer = (
   state = initStateTodos,
   action: IActionTodosType
-) => {
+): IinitStateTodos => {
   switch (action.type) {
     case ETodosActionType.FETCH_TODOS:
-      return { error: null, todos: [], loading: true };
+      return { ...state, loading: true };
     case ETodosActionType.FETCH_TODOS_SUCCESS:
       return {
-        error: null,
+        ...state,
         loading: false,
-        todos: [...state.todos, ...action.payload]
+        todos: [...action.payload],
       };
     case ETodosActionType.FETCH_TODOS_ERROR:
-      return { loading: false, todos: [], error: action.payload };
+      return { ...state, loading: false, error: action.payload };
+    case ETodosActionType.SET_TODO_PAGE:
+      return { ...state, page: action.payload };
 
     default:
       return state;
